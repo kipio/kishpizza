@@ -1,15 +1,6 @@
-<?php
-    echo "H";
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Document</title>
-</head>
-<body>
+<?php include_once "templates/header.php"; ?>
 
 
 
-</body>
-</html>
+<?php include_once "templates/footer.php"; ?>
+
