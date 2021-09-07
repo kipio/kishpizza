@@ -48,8 +48,8 @@
 
 <section class="container grey-text">
     <h4 class="center">Add a Pizza</h4>
-    <form class="white" action="add.php" method="POST">
-
+    <!-- <form class="white" action="add.php" method="POST"> -->
+    <form class="white" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <label>Your Email:</label>
         <input type="text" name="email" value="<?php echo $email ?>">
         <div class="red-text"><?php echo $errors['email']; ?></div>

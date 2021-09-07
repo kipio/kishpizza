@@ -1,3 +1,20 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['name'])) {
+        $username = $_SESSION['name'];
+    }
+    else {
+        $username = 'GUEST';
+    }
+
+    if($_SERVER['QUERY_STRING']=='noname') {
+        //unset($_SESSION['name']);
+        session_unset();
+        $username = 'GUEST';
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +39,12 @@
         <div class="container">
             <a href="index.php" class="brand-logo brand-text">Kishan Pizza</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
+                <li class="grey-text">Hello <?php echo htmlspecialchars($username); ?></li>
+                <?php if( isset($_SESSION['name']) ): ?>
+                    <li><a href="index.php?noname" class="btn brand z-depth-0">Logout</a></li>
+                <?php else: ?>
+                    <li><a href="session.php" class="btn brand z-depth-0">Login</a></li>
+                <?php endif; ?>
                 <li><a href="add.php" class="btn brand z-depth-0">Add a Pizza</a></li>
             </ul>
         </div>
