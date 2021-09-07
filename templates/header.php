@@ -1,12 +1,8 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['name'])) {
-        $username = $_SESSION['name'];
-    }
-    else {
-        $username = 'GUEST';
-    }
+    $username = $_SESSION['name'] ?? 'GUEST';
+    $gender = $_COOKIE['gender'] ?? '';
 
     if($_SERVER['QUERY_STRING']=='noname') {
         //unset($_SESSION['name']);
@@ -40,6 +36,7 @@
             <a href="index.php" class="brand-logo brand-text">Kishan Pizza</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
                 <li class="grey-text">Hello <?php echo htmlspecialchars($username); ?></li>
+                <li class="grey-text"> <?php echo $gender<>'' ? htmlspecialchars("($gender)") : ''; ?> </li>
                 <?php if( isset($_SESSION['name']) ): ?>
                     <li><a href="index.php?noname" class="btn brand z-depth-0">Logout</a></li>
                 <?php else: ?>
